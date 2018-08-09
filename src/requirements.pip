@@ -1,5 +1,9 @@
-Django<1.11, >=1.10  
+Django
 gunicorn==19.6.0  
 psycopg2==2.7.5
 celery==4.2.0
 redis==2.10.6
+djangorestframework
+markdown
+django-filter
+django-rest-swagger

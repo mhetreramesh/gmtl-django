@@ -13,17 +13,32 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
+from django.contrib.auth.models import User
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 
+from rest_framework import routers, serializers, viewsets
+
 from myapp.views import ShowHelloWorld
 
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'username', 'email', 'is_staff', 'is_active')
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+router = routers.DefaultRouter()
+router.register(r'users', UserViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', ShowHelloWorld.as_view())
+    url(r'^$', ShowHelloWorld.as_view()),
+    url(r'^api/', include(router.urls)),
 ]
 # urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
