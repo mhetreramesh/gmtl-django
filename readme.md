@@ -13,6 +13,7 @@
 2. Clone this repo on your machine
 3. First run `make build` inside root directory.
 4. Then run `make up` to start up the project for first time.
+5. Project should be accessible on `localhost:8000`
 
 Checkout the [commands](#commands) for more usage.
 
