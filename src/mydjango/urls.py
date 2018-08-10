@@ -26,7 +26,7 @@ from myapp.views import ShowHelloWorld
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'username', 'email', 'is_staff', 'is_active')
+        fields = ('first_name', 'last_name', 'username', 'email', 'is_staff')
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
