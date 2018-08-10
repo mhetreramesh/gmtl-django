@@ -1,4 +1,4 @@
-## Get my look backend app
+## Get me the look backend app
 
 ### What things include in this project?
 1. Python `3.6`
